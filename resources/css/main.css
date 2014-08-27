@@ -63,15 +63,13 @@ table {
 #firstLogo{
 	width:100%;
 	height: 365px;
+	top: 25px;
 	
 }
 
 .logo{
 	max-width:100%;
 	height: 275;
-	position: absolute;
-	left: 35%;
-	top: 30px;
 }
 #topHeader{
 
@@ -85,15 +83,42 @@ table {
 #logo_small{
 
 
-	
+
 }
 
 /*the button */
-#submitButton{
-	height: 100px;
-	width: 100px;
-	position: fixed;
-	left: 48%;
+.classname {
+	background-color:#fffcff;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #45c2e8;
+	display:inline-block;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:normal;
+	font-style:normal;
+	height:33px;
+	line-height:33px;
+	width:151px;
+	text-decoration:none;
+	text-align:center;
+}.classname:hover {
+	background-color:#8edbf2;
+}.classname:active {
+	position:relative;
+	top:1px;
 }
 /* end button*/
 /* Yes, this is all for the slider */
