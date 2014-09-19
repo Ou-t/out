@@ -1,6 +1,7 @@
 $(document).ready(function(){
 $('#secondScreen').hide();
 $('.login-card').hide();
+$('#ss').hide();
 
 	function startSwiper(){
   	var mySwiper = $('.swiper-container').swiper({
@@ -21,5 +22,16 @@ $('.login-card').hide();
 	$('#login').click(function(){
 		$('#secondScreen').fadeOut( 500 );
 		$('.login-card').fadeIn( 500 );
-	})
+	});
+	$('#savedSearches').click(function(){
+		$('#mainContentWrapper').fadeOut( 500 );
+		$('#foot').fadeOut( 500 );
+		$('#ss').fadeIn();
+	});
+	$('#findMore').click(function(){
+		$('#ss').fadeOut( 500 );
+		$('#foot').fadeIn( 500 );
+		$('#mainContentWrapper').fadeIn( 500 );
+
+	});
 });
