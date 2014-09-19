@@ -65,17 +65,17 @@ $('#ss').hide();
 		$('.login-card').slideDown( 500 );
 	});
 	$('#savedSearches').click(function(){
-		$('#mainContentWrapper').fadeOut( 500 );
+		$('#mainSliderWrapper').fadeOut( 500 );
 		$('#foot').fadeOut( 500 );
 		$('#ss').fadeIn();
 	});
 	$('#findMore').click(function(){
 		$('#ss').fadeOut( 500 );
 		$('#foot').fadeIn( 500 );
-		$('#mainContentWrapper').fadeIn( 500 );
+		$('#mainSliderWrapper').fadeIn( 500 );
 
 	});
 	$('#delete').click(function(){
-		
+
 	});
 });
