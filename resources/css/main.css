@@ -147,8 +147,12 @@ h2{
 }
 #ssItem{
 	height: 200px;
-	width: 100px;
-	border: 1px solid grey;
+	width: 168px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background-image: url('../img/ssItem.png');
 }
 #mainContainer{
 	position: absolute;
@@ -173,6 +177,7 @@ h2{
 }
 #findMore{
 	float: right;
+	margin-right: 20px;
 }
 #delete{
 	width: 98px;
