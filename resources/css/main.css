@@ -94,6 +94,12 @@ h2{
 	max-width:100%;
 	height: 275;
 }
+#mainSliderWrapper{
+	width: 100%;
+	position: absolute;
+	top: 99px;
+	bottom: 100px;
+}
 #topHeader{
 
 	width: 100%;
