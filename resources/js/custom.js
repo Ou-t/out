@@ -14,7 +14,7 @@ $('#ss').hide();
   	}
 
   	function goHome(){
-  		$('.login-card').fadeOut( 500 );
+  		$('.login-card').slideUp( 500 );
   		$('#secondScreen').fadeIn( 500 );
   	};
 
@@ -62,7 +62,7 @@ $('#ss').hide();
 
 	$('#login').click(function(){
 		$('#secondScreen').fadeOut( 500 );
-		$('.login-card').fadeIn( 500 );
+		$('.login-card').slideDown( 500 );
 	});
 	$('#savedSearches').click(function(){
 		$('#mainContentWrapper').fadeOut( 500 );
@@ -74,5 +74,8 @@ $('#ss').hide();
 		$('#foot').fadeIn( 500 );
 		$('#mainContentWrapper').fadeIn( 500 );
 
+	});
+	$('#delete').click(function(){
+		
 	});
 });

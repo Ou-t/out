@@ -134,6 +134,9 @@ h2{
 	float: right;
 	background-image: url('../img/pin.png');
 }
+#pin:active{
+	background-image: url('../img/pin_clicked.png');
+}
 #findMore{
 	float: right;
 }
@@ -142,6 +145,9 @@ h2{
 	height: 98px;
 	float: left;
 	background-image: url('../img/delete.png');
+}
+#delete:active{
+	background-image: url('../img/delete_clicked.png');
 }
 #logo_small{
 
