@@ -1,5 +1,6 @@
 $(document).ready(function(){
 $('#secondScreen').hide();
+$('.login-card').hide();
 
 	function startSwiper(){
   	var mySwiper = $('.swiper-container').swiper({
@@ -16,4 +17,9 @@ $('#secondScreen').hide();
 		$('#secondScreen').fadeIn( 500 );
 		startSwiper();
 	});
+
+	$('#login').click(function(){
+		$('#secondScreen').fadeOut( 500 );
+		$('.login-card').fadeIn( 500 );
+	})
 });
