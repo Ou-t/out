@@ -86,7 +86,7 @@ $('#ss').hide();
 
        var slideSave = Parse.Object.extend("userSavedSearches");
        var saveSlide = new Parse.Query(slideSave);
-       saveSlide.equalTo("username", user);
+       saveSlide.equalTo("username", "test");
        saveSlide.first({
   		success: function(plz) {
 
