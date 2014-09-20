@@ -5,12 +5,14 @@ $('.login-card').hide();
 $('#ss').hide();
 
 	function startSwiper(){
+
   	var mySwiper = $('.swiper-container').swiper({
     //Your options here:
     mode:'horizontal',
-    loop: true
+    loop: false
     //etc..
   });
+  	window.mySwiper = mySwiper
   	}
 
   	function goHome(){
@@ -49,6 +51,67 @@ $('#ss').hide();
 		        };
 		       // End function to sign in
 	/* THIS IS TO LOGIN*/
+	/* THIS IS TO CHECK WHAT THE SERVER SAYS*/
+		function checkWhatServerSays(){
+		var user = Parse.User.current().get("username");
+
+       var serverSays =  Parse.Object.extend("userSavedSearches");
+       var query = new Parse.Query(serverSays);
+       query.equalTo("usersname", user );
+       query.find
+       ({
+        success: function(results) 
+              {
+              // Do something with the returned Parse.Object values
+              for (var i = 0; i < results.length; i++) { 
+              var object = results[i];
+              var theServerSays = object.get('savedSoFar');
+              
+              $.cookie("theServerSays", theServerSays);
+              
+              }
+              },
+              error: function(error) 
+              {
+              alert("Error: " + error.code + " " + error.message);
+              }
+      });
+		}
+	/* THIS IS TO CHECK WHAT THE SERVER SAYS*/
+	/* THIS IS TO SAVE A SLIDE TO SAVED SEARCHES AND IT IS STRESSING ME OUT SO MUCH*/
+		function saveCurrentSlide(){
+
+		var user = Parse.User.current().get("username");
+				
+
+       var slideSave = Parse.Object.extend("userSavedSearches");
+       var saveSlide = new Parse.Query(slideSave);
+       saveSlide.equalTo("username", user);
+       saveSlide.first({
+  		success: function(plz) {
+
+  			if (plz) { alert("'yay'")};
+
+  		var serveySays = $.cookie("theServerSays");
+		var weSay = serveySays + 1
+		var weWant = "slideIndex" + weSay
+     	plz.set(String(weWant), mySwiper.activeIndex);
+     	plz.set("savedSoFar", weSay);
+    	plz.save();
+    							},
+  		error: function(error) {
+    	alert("Error: " + error.code + " " + error.message);
+  		}
+		});
+
+       
+
+        
+ 
+        
+  }
+	/* THIS IS TO SAVE A SLIDE TO SAVED SEARCHES*/
+	
 
 	$('#loginSubmit').click(function(){
 		signIn();
@@ -76,6 +139,12 @@ $('#ss').hide();
 
 	});
 	$('#delete').click(function(){
+
+	});
+	$('#pin').click(function(){
+		/*alert(Parse.User.current().get("username"));(this will be useful in future please dont discard)*/
+		checkWhatServerSays();
+		saveCurrentSlide();
 
 	});
 });
