@@ -166,6 +166,11 @@ h2{
 	margin-left: auto;
 	margin-right: auto;
 }
+#actualSavedItem{
+	width: 168px;
+	height: 97px;
+	padding-top: 17px;
+}
 #pin{
 	width: 98px;
 	height: 98px;

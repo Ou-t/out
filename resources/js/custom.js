@@ -52,63 +52,57 @@ $('#ss').hide();
 		       // End function to sign in
 	/* THIS IS TO LOGIN*/
 	/* THIS IS TO CHECK WHAT THE SERVER SAYS*/
-		function checkWhatServerSays(){
-		var user = Parse.User.current().get("username");
-
-       var serverSays =  Parse.Object.extend("userSavedSearches");
-       var query = new Parse.Query(serverSays);
-       query.equalTo("usersname", user );
-       query.find
-       ({
-        success: function(results) 
-              {
-              // Do something with the returned Parse.Object values
-              for (var i = 0; i < results.length; i++) { 
-              var object = results[i];
-              var theServerSays = object.get('savedSoFar');
-              
-              $.cookie("theServerSays", theServerSays);
-              
-              }
-              },
-              error: function(error) 
-              {
-              alert("Error: " + error.code + " " + error.message);
-              }
-      });
+		function save(){
+		var objectId = $.cookie("objectId");
+		var query = new Parse.Query("userSavedSearches");
+		query.equalTo("objectId", objectId);
+		query.each(function(obj) {
+  		obj.set($.cookie("weWant"), mySwiper.activeIndex);
+  		obj.set("savedSoFar", +$.cookie("weSay"))
+  		return obj.save();
+		}).then(function() {
+  		// All objects updated.
+		}, function(err) {
+  		console.log(err);
+		});
+       
 		}
 	/* THIS IS TO CHECK WHAT THE SERVER SAYS*/
+	/* THIS IS TO CALCULATE*/
+		function calculate(){
+			var sergeySays = $.cookie("theServerSays");
+			var weSay = +sergeySays + 1
+			var weWant = "slideIndex" + weSay
+			$.cookie("weSay", weSay);
+			$.cookie("weWant", weWant);
+			alert($.cookie("weSay"));
+			alert($.cookie("weWant"));
+		}
+	/* THIS IS TO CALCULATE*/
 	/* THIS IS TO SAVE A SLIDE TO SAVED SEARCHES AND IT IS STRESSING ME OUT SO MUCH*/
-		function saveCurrentSlide(){
+		function getObjectId(){
 
-		var user = Parse.User.current().get("username");
-				
+	  var user = Parse.User.current().get("username");
+      var getId = Parse.Object.extend("userSavedSearches");
+      var query = new Parse.Query(getId);
+      query.equalTo("usersname", user );
+      query.find
+      ({
+        success: function(results){
+          for (var i = 0; i < results.length; i++){
+            var object = results[i];
+            var theObjectId = object.id
+            var serveySays = object.get('savedSoFar');
+            $.cookie("theServerSays", serveySays);
+            $.cookie("objectId", theObjectId);
+            alert($.cookie("theServerSays"));
 
-       var slideSave = Parse.Object.extend("userSavedSearches");
-       var saveSlide = new Parse.Query(slideSave);
-       saveSlide.equalTo("username", "test");
-       saveSlide.first({
-  		success: function(plz) {
+            
+          }
+        }, error: function(){}
+      });
 
-  			if (plz) { alert("'yay'")};
-
-  		var serveySays = $.cookie("theServerSays");
-		var weSay = serveySays + 1
-		var weWant = "slideIndex" + weSay
-     	plz.set(String(weWant), mySwiper.activeIndex);
-     	plz.set("savedSoFar", weSay);
-    	plz.save();
-    							},
-  		error: function(error) {
-    	alert("Error: " + error.code + " " + error.message);
-  		}
-		});
-
-       
-
-        
- 
-        
+		            
   }
 	/* THIS IS TO SAVE A SLIDE TO SAVED SEARCHES*/
 	
@@ -143,8 +137,10 @@ $('#ss').hide();
 	});
 	$('#pin').click(function(){
 		/*alert(Parse.User.current().get("username"));(this will be useful in future please dont discard)*/
-		checkWhatServerSays();
-		saveCurrentSlide();
-
+		getObjectId();
+		calculate();
+		save();
+		mySwiper.swipePrev();
+		
 	});
 });
