@@ -140,7 +140,7 @@ $('#ss').hide();
 		getObjectId();
 		calculate();
 		save();
-		mySwiper.swipePrev();
+		mySwiper.swipeNext();
 		
 	});
 });
